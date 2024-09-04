@@ -7,7 +7,6 @@ def generate_entropy(entropy_bits):
     return entropy_hex
 
 entropy_generated = generate_entropy(128)
-print(f"Entropy:{entropy_generated}")
 
 def add_checksum(entropy_hex):
     entropy_bin = bin(int(entropy_hex,16))[2:].zfill(len(entropy_hex)*4)
