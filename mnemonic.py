@@ -39,7 +39,8 @@ print(f"mnemoic:{mnemonic}")
 def seed_generated(mnemoic_phrase):
     salt = "Random_"+secrets.token_hex(16)
     seed = hashlib.pbkdf2_hmac('sha512',mnemoic_phrase.encode(),salt.encode(),2048)
-    return seed
+    return binascii.hexlify(seed).decode()
 
 seed = seed_generated(mnemonic)
 print(f"The seed generated:{seed}")
+print(f"seed_len:{len(seed)}")
