@@ -41,6 +41,6 @@ def seed_generated(mnemoic_phrase):
     seed = hashlib.pbkdf2_hmac('sha512',mnemoic_phrase.encode(),salt.encode(),2048)
     return binascii.hexlify(seed).decode()
 
-seed = seed_generated(mnemonic)
-print(f"The seed generated:{seed}")
-print(f"seed_len:{len(seed)}")
+private_key = seed_generated(mnemonic)
+print(f"The private_key:{private_key}")
+print(f"private_key:{len(private_key)}")
