@@ -28,7 +28,9 @@ def binary_mnemonic_word(checksum):
     print(f"checksum_len:{len(checksum)}")
     for i in range (0, len(checksum), 11):
         index = int(checksum[i:i+11],2)
-        print(f"index:{index}")
+        mnemonic.append(wordlist[index])
+    return " ".join(mnemonic)
 
 
-binary_mnemonic_word(checksum_with_entropy)
+mnemonic = binary_mnemonic_word(checksum_with_entropy)
+print(f"mnemoic:{mnemonic}")
