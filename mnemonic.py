@@ -14,6 +14,12 @@ def add_checksum(entropy_hex):
     checksum_len = len(entropy_bin)//32
     checksum = sha_hash[:checksum_len]
     checksum_with_entropy = entropy_bin + checksum
-    print(f"checksumWithEntropy:{checksum_with_entropy}")
+    return checksum_with_entropy
 
 add_checksum(entropy_generated)
+def get_wordlist():
+    with open('cleaned_wordlist.txt','r') as file:
+        wordlist = file.read().splitlines()
+        print(f"worldlist_len:{len(wordlist)}")
+
+get_wordlist()
