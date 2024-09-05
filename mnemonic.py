@@ -12,7 +12,7 @@ def add_checksum(entropy_hex):
     entropy_bin = bin(int(entropy_hex,16))[2:].zfill(len(entropy_hex)*4)
     sha_hash = bin(int(hashlib.sha256(bytes.fromhex(entropy_hex)).hexdigest(),16))[2:].zfill(256)
     checksum_len = len(entropy_bin)//32
-    checksum = sha_hash[:checksum_len]
+    checksum = sha_hash[:136]
     checksum_with_entropy = entropy_bin + checksum
     return checksum_with_entropy
 
