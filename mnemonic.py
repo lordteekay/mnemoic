@@ -10,7 +10,7 @@ entropy_generated = generate_entropy(128)
 
 def add_checksum(entropy_hex):
     entropy_bin = bin(int(entropy_hex,16))[2:].zfill(len(entropy_hex)*4)
-    print(entropy_bin)
-    print(f"entropy_bin_len:{len(entropy_bin)}")
+    sha_hash = bin(int(hashlib.sha256(bytes.fromhex(entropy_hex)).hexdigest(),16))[2:].zfill(256)
+    print(f"sha_hash{sha_hash}")
 
 add_checksum(entropy_generated)
