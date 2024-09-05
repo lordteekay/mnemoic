@@ -13,6 +13,7 @@ def add_checksum(entropy_hex):
     sha_hash = bin(int(hashlib.sha256(bytes.fromhex(entropy_hex)).hexdigest(),16))[2:].zfill(256)
     checksum_len = len(entropy_bin)//32
     checksum = sha_hash[:checksum_len]
-    print(checksum)
+    checksum_with_entropy = entropy_bin + checksum
+    print(f"checksumWithEntropy:{checksum_with_entropy}")
 
 add_checksum(entropy_generated)
