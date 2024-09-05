@@ -16,10 +16,19 @@ def add_checksum(entropy_hex):
     checksum_with_entropy = entropy_bin + checksum
     return checksum_with_entropy
 
-add_checksum(entropy_generated)
+checksum_with_entropy=add_checksum(entropy_generated)
 def get_wordlist():
     with open('cleaned_wordlist.txt','r') as file:
         wordlist = file.read().splitlines()
-        print(f"worldlist_len:{len(wordlist)}")
+        return wordlist
 
-get_wordlist()
+def binary_mnemonic_word(checksum):
+    wordlist = get_wordlist()
+    mnemonic = []
+    print(f"checksum_len:{len(checksum)}")
+    for i in range (0, len(checksum), 11):
+        index = int(checksum[i:i+11],2)
+        print(f"index:{index}")
+
+
+binary_mnemonic_word(checksum_with_entropy)
