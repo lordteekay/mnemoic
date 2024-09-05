@@ -14,5 +14,4 @@ def process_wordlist(input_file, output_file):
     print(f"Processed {len(words)} words.")
     print(f"First 10 words: {words[:10]}")
 
-# Run the script with your file names
 process_wordlist('output.txt', 'cleaned_wordlist.txt')
