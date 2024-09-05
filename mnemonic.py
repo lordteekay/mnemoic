@@ -37,8 +37,9 @@ mnemonic = binary_mnemonic_word(checksum_with_entropy)
 print(f"mnemoic:{mnemonic}")
 
 def seed_generated(mnemoic_phrase):
-    seed = "mnemoic_phrase" + secrets.token_hex(16)
-    return seed.encode()
+    salt = "Random_"+secrets.token_hex(16)
+    seed = hashlib.pbkdf2_hmac('sha512',mnemoic_phrase.encode(),salt.encode(),2048)
+    return seed
 
 seed = seed_generated(mnemonic)
 print(f"The seed generated:{seed}")
