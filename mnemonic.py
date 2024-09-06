@@ -2,7 +2,7 @@ import os
 import hashlib
 import binascii
 import secrets
-
+import ecdsa
 def generate_entropy(entropy_bits):
     entropy_bytes = os.urandom(entropy_bits//8)
     entropy_hex = entropy_bytes.hex()
@@ -43,4 +43,12 @@ def seed_generated(mnemoic_phrase):
 
 private_key = seed_generated(mnemonic)
 print(f"The private_key:{private_key}")
-print(f"private_key:{len(private_key)}")
+print(f"private_key_len:{len(private_key)}")
+
+def ecdsa_private_key(key):
+    new_key = key[:64]
+    new_private_key = ecdsa.SigningKey.from_string(binascii.unhexlify(new_key),curve=ecdsa.SECP256k1)
+    return binascii.hexlify(new_private_key.to_string()).decode()
+Elliptic_private_key = ecdsa_private_key(private_key)
+print(f"Elliptic_private_key:{Elliptic_private_key}")
+print(f"Lenght:{len(Elliptic_private_key)}")
